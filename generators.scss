@@ -1,0 +1,20 @@
+// build a palette from single color value
+@mixin build-color-scale($color: #444, $name: "primary", $interval: 7.5%) {
+  @for $i from 1 through 9 {
+    $multiplier: abs($i - 5);
+    $adjust-amount: $interval * $multiplier;
+
+    // use either lighten or darken
+    $color-function: if(
+      $i > 5,
+      get-function("darken"),
+      get-function("lighten")
+    );
+
+    // this will be e.g. for $i == 1 - lighten($color, $interval * 4)
+    $computed-color: call($color-function, $color, $adjust-amount);
+
+    // generates e.g. --color-primary-500 css variables.
+    --color-#{$name}-#{$i * 100}: #{$computed-color};
+  }
+}
