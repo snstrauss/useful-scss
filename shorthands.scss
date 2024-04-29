@@ -1,3 +1,27 @@
+// one line flex container
+@mixin flex($align: center, $justify: center, $direction: column, $gap: 0) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+  gap: $gap;
+}
+
+// as items are added, they add columns which take equal space and full height, up to $max-width,
+// then they will be added on another row, then the height should fall back to $min-height.
+@mixin auto-grid($min-width: 250px, $min-height: 250px, $column-gap: 50px, $row-gap: 50px) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
+  grid-auto-rows: minmax($min-height, 1fr);
+
+  column-gap: $column-gap;
+  row-gap: $row-gap;
+
+  & > * {
+    width: 100%;
+  }
+}
+
 // one line absolute position
 @mixin absolute-position(
   $top: unset,
