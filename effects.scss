@@ -40,3 +40,46 @@
   border: $border-width solid transparent;
   border-radius: $border-radius;
 }
+
+// turns an element into a skeleton animation
+@mixin skeleton(
+  $color: var(--color-grey-300),
+  $blur-size: 200px,
+  $duration: 3s
+) {
+  --direction: 90deg;
+
+  // only include this if using the on-rtl mixin!
+  @include on-rtl() {
+    --direction: 270deg;
+  }
+
+  background: linear-gradient(
+    var(--direction),
+    transparent 0%,
+    $color 50%,
+    transparent 100%
+  );
+  background-size: $blur-size;
+  background-repeat: no-repeat;
+
+  color: transparent;
+
+  path {
+    fill: transparent;
+  }
+
+  border-radius: var(--border-radius-xl);
+
+  animation: skeleton $duration linear infinite both;
+
+  @keyframes skeleton {
+    0% {
+      background-position: calc(0% - $blur-size);
+    }
+    75%,
+    100% {
+      background-position: calc(100% + $blur-size);
+    }
+  }
+}
