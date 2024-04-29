@@ -1,5 +1,10 @@
 // one line absolute position
-@mixin absolute-position($top: unset, $left: unset, $bottom: unset, $right: unset) {
+@mixin absolute-position(
+  $top: unset,
+  $left: unset,
+  $bottom: unset,
+  $right: unset
+) {
   position: absolute;
   top: $top;
   left: $left;
@@ -10,5 +15,40 @@
   @include on-rtl {
     left: $right;
     right: $left;
+  }
+}
+
+// styling a scrollbar
+@mixin with-scrollbar(
+  $width: 8px,
+  $height: unset,
+  $color: #e4e8ec,
+  $trackColor: transparent,
+  $trackInlinePad: 0,
+  $trackBlockPad: 0,
+  $padOppositeSide: false
+) {
+  padding-inline-end: $trackInlinePad;
+  margin-inline-end: $trackInlinePad;
+
+  @if $padOppositeSide {
+    margin-inline-start: $width + 2 * $trackInlinePad;
+  }
+
+  &::-webkit-scrollbar {
+    display: unset;
+    width: $width;
+    height: $height;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: $trackColor;
+    border-radius: 20px;
+    @include margin-block($trackBlockPad);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $color;
+    border-radius: 20px;
   }
 }
