@@ -49,9 +49,10 @@
 ) {
   --direction: 90deg;
 
-  // only include this if using the on-rtl mixin!
-  @include on-rtl() {
-    --direction: 270deg;
+  @if mixin-exists(on-rtl) {
+    @include on-rtl() {
+      --direction: 270deg;
+    }
   }
 
   background: linear-gradient(
