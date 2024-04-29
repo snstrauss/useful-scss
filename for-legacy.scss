@@ -1,0 +1,25 @@
+// replacements for the logical padding and margin inline/block,
+// for when the env does not support it
+@mixin padding-inline($pad) {
+  --inline-pad: #{$pad};
+  padding-inline-start: var(--inline-pad);
+  padding-inline-end: var(--inline-pad);
+}
+
+@mixin padding-block($pad) {
+  --block-pad: #{$pad};
+  padding-block-start: var(--block-pad);
+  padding-block-end: var(--block-pad);
+}
+
+@mixin margin-inline($margin) {
+  --inline-margin: #{$margin};
+  margin-inline-start: var(--inline-margin);
+  margin-inline-end: var(--inline-margin);
+}
+
+@mixin margin-block($margin) {
+  --block-margin: #{$margin};
+  margin-block-start: var(--block-margin);
+  margin-block-end: var(--block-margin);
+}
