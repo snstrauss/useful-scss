@@ -1,0 +1,14 @@
+// one line absolute position
+@mixin absolute-position($top: unset, $left: unset, $bottom: unset, $right: unset) {
+  position: absolute;
+  top: $top;
+  left: $left;
+  bottom: $bottom;
+  right: $right;
+
+  // only include this if using the on-rtl mixin!
+  @include on-rtl {
+    left: $right;
+    right: $left;
+  }
+}
