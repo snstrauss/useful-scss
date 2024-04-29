@@ -1,0 +1,6 @@
+// detect rtl - need to set the 'dir' attribute on a container
+@mixin on-rtl() {
+  [dir="rtl"] & {
+    @content;
+  }
+}
