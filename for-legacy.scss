@@ -23,3 +23,15 @@
   margin-block-start: var(--block-margin);
   margin-block-end: var(--block-margin);
 }
+
+// same width and height for when aspect-ratio rule is not supported
+@mixin square-size($size: 50px, $round: false) {
+  --size: #{$size};
+
+  width: var(--size);
+  height: var(--size);
+
+  @if $round {
+    border-radius: 100%;
+  }
+}
