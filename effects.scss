@@ -1,0 +1,14 @@
+// adds fade effect at top/bottom of scroll container
+@mixin with-fade($placement: 'top', $height: 40px, $color: white) {
+  width: 100%;
+  --fade-height: #{$height};
+  height: var(--fade-height);
+
+  @if $placement == 'top' {
+    --direction: 180deg;
+  } @else if $placement == 'bottom' {
+    --direction: 0deg;
+  }
+
+  background-image: linear-gradient(var(--direction), $color, transparent);
+}
