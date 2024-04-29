@@ -28,3 +28,15 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: $lines;
 }
+
+// uses 2 background to create the effect of a gradient border
+@mixin gradient-border(
+  $background-gradient: linear-gradient(var(--color-white), var(--color-white)),
+  $border-gradient: linear-gradient(var(--color-grey-300), var(--color-white)),
+  $border-width: 5px,
+  $border-radius: var(--border-radius-lg)
+) {
+  background: $background-gradient padding-box, $border-gradient border-box;
+  border: $border-width solid transparent;
+  border-radius: $border-radius;
+}
